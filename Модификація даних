@@ -1,0 +1,35 @@
+CREATE TABLE SalesLT.Product_19(
+    ProductID int IDENTITY(1,1) NOT NULL,
+    Name nvarchar(255) NOT NULL,
+    ProductNumber nvarchar(25) NOT NULL,
+    Color nvarchar(15) NULL,
+    StandardCost money NOT NULL,
+    ListPrice money NOT NULL,
+    Size nvarchar(5) NULL,
+    Weight decimal(8, 2) NULL,
+    ProductCategoryID int NULL
+)
+
+
+INSERT INTO SalesLT.Product_ 19(ProductID, Name, ProductNumber, Color, StandardCost, ListPrice, Size, Weight, ProductCategoryID)
+SELECT ProductID, Name, ProductNumber, Color, StandardCost, ListPrice, Size, Weight, ProductCategoryID 
+FROM SalesLT.Product;
+
+
+CREATE TABLE SalesLT.ColorTMP_19   (
+    ColorID int IDENTITY(1,1) NOT NULL, AUTO_INCREMENT
+    NameColor nvarchar(25) NOT NULL,
+)
+
+INSERT INTO SalesLT.ColorTMP_ 19 (Color)
+SELECT Color
+FROM SalesLT.Product;
+
+
+ALTER TABLE SalesLT.Product_ NNN ADD ColorID int;
+
+UPDATE Product_ 19
+SET ProductTMP_ 19 .ColorID = ColorTMP_ 19 .ColorID
+FROM Product_ 19 inner join ColorTMP_ 19 ON Product_ 19 .Color = ColorTMP_ 19 .NameColor;
+
+
